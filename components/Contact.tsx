@@ -40,19 +40,27 @@ export default function Contact() {
 
         <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2">
           {/* FORM */}
-          <form onSubmit={onSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input className="w-full rounded-md border p-3" name="name" placeholder="Your Name *" required />
-              <input className="w-full rounded-md border p-3" name="email" placeholder="Email *" type="email" required />
-            </div>
-            <input className="w-full rounded-md border p-3" name="phone" placeholder="Phone" />
-            <textarea className="w-full rounded-md border p-3" name="message" placeholder="Tell us about your project…" rows={6} />
-            <button disabled={state === "loading"} className="rounded-md bg-[var(--brand)] px-6 py-3 font-medium text-black disabled:opacity-60">
-              {state === "loading" ? "Submitting..." : "Submit"}
-            </button>
-            {state === "success" && (<p className="text-green-700">Thank you! We’ll call you within 24 hours.</p>)}
-            {state === "error" && (<p className="text-red-600">Couldn’t send the form. {err}</p>)}
-          </form>
+          <form
+  name="contact"
+  method="POST"
+  action="/thanks"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  className="space-y-4"
+>
+  {/* Netlify needs these two hidden fields */}
+  <input type="hidden" name="form-name" value="contact" />
+  <p className="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <input className="w-full rounded-md border p-3" name="name" placeholder="Your Name *" required />
+    <input className="w-full rounded-md border p-3" name="email" placeholder="Email *" type="email" required />
+  </div>
+  <input className="w-full rounded-md border p-3" name="phone" placeholder="Phone" />
+  <textarea className="w-full rounded-md border p-3" name="message" placeholder="Tell us about your project…" rows={6} />
+  <button className="rounded-md bg-[var(--brand)] px-6 py-3 font-medium text-black">Submit</button>
+</form>
+
 
           {/* ADDRESS CARD */}
           <div className="space-y-4">
