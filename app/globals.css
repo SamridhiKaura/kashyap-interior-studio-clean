@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand: #C8A86D; /* Beige-gold accent */
+  --charcoal: #222222;
+  --offwhite: #FAFAFA;
+}
+body { color: #222; background: #fff; }
+a { text-underline-offset: 3px; }

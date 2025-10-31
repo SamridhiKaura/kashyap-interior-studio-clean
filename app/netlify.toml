@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Optional: ensure the thanks route exists even if JS is off
+[[redirects]]
+  from = "/?success=true"
+  to = "/thanks"
+  status = 301
